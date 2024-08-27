@@ -1,0 +1,29 @@
+{
+    "apiVersion": 2,
+    "name": "multi-image-block/gallery",
+    "title": "2 - Multi Image Gallery Carrousel",
+    "category": "media",
+    "description": "A Gutenberg block to display multiple images.",
+    "keywords": [ "gallery", "images", "photos" ],
+    "attributes": {
+        "images": {
+            "type": "array",
+            "default": [],
+            "source": "query",
+            "selector": ".gallery-image",
+            "query": {
+                "url": { "source": "attribute", "selector": "img", "attribute": "src" },
+                "alt": { "source": "attribute", "selector": "img", "attribute": "alt" },
+                "id": { "source": "attribute", "selector": "img", "attribute": "data-id" }
+            }
+        }
+    },
+    "supports": {
+        "align": true,
+        "alignWide": true,
+        "html": false
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

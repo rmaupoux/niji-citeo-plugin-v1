@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "niji-citeo-plugin-v1/innerblocks",
+	"version": "1.0",
+	"title": "1- section 2 columns",
+	"icon": "insert-before",
+	"category": "text",
+	"description": "section 1 avec 2 colonnes",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "niji-citeo-plugin-v1",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "niji-citeo-plugin-v1/url",
+  "version": "1.0",
+  "title": "3. Un bouton stylé",
+  "icon": "edit",
+  "category": "text",
+  "description": "Un bloc éditable avec le composant Richtext",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "text": {
+      "type": "string",
+      "source": "text",
+      "selector": "a"
+    },
+    "url": {
+      "type": "string",
+      "source": "attribute",
+      "attribute": "href",
+      "selector": "a"
+    },
+    "type": {
+      "type": "string",
+      "default": "droite"
+    }
+  },
+  "textdomain": "new-gutenberg-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

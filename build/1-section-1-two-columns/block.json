@@ -10,6 +10,41 @@
   "supports": {
     "html": false
   },
+  "attributes": {
+    "number": {
+      "type": "string",
+      "source": "html",
+      "selector": ".number"
+    },
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": ".title"
+    },
+    "chapterSign": {
+      "type": "string",
+      "source": "text",
+      "selector": ".sign",
+      "default": "#"
+    },
+    "alignment": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "withRadius": {
+      "type": "boolean",
+      "default": false
+    },
+    "radius": {
+      "type": "integer",
+      "default": 8
+    }
+  },
   "textdomain": "niji-citeo-plugin-v1",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

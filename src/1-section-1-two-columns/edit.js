@@ -1,9 +1,27 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	BlockControls,
+	AlignmentToolbar,
+	InspectorControls,
+    PanelColorSettings,
+    InnerBlocks,
+} from '@wordpress/block-editor'
+import {
+	PanelBody,
+	ButtonGroup,
+	Button,
+	ToggleControl,
+	RangeControl,
+} from '@wordpress/components'
+
 import './editor.scss';
 
-export default function Edit() {
+export default function Edit( props ) {
     const blockProps = useBlockProps();
+    // const { attributes: { number, title, chapterSign, alignment, textColor, backgroundColor, withRadius, radius }, setAttributes, className, isSelected } = props
+    const { attributes, className, setAttributes} = props
+    const { number, title, chapterSign, alignment, textColor, backgroundColor, withRadius, radius } = attributes
 
     // Liste des blocs autorisés
     const ALLOWED_BLOCKS = ['core/image', 'core/heading', 'core/paragraph', 'niji-citeo-plugin-v1/url', 'core/button'];
@@ -32,7 +50,51 @@ export default function Edit() {
     ];
 
     return (
-        <div {...blockProps}>
+        <div { ...blockProps }
+				style={ {
+					borderRadius: withRadius ? radius : null,
+					backgroundColor: backgroundColor,
+					textAlign: alignment,
+				} }
+			>
+
+            <BlockControls>
+                <AlignmentToolbar
+                    value={ props.attributes.alignment }
+                    onChange={ alignment => props.setAttributes( { alignment } ) }
+                />
+            </BlockControls>
+            <InspectorControls>
+				
+				<PanelBody title={ __( 'Border', 'Border traduction.' ) }>
+					<ToggleControl
+						label={ __( 'Radius', 'Border traduction.' ) }
+						checked={ withRadius }
+						onChange={ () => setAttributes( { withRadius: ! withRadius } ) }
+					/>
+
+					{ withRadius && (
+						<RangeControl
+							value={ radius }
+							onChange={ radius  => setAttributes( { radius } ) }
+							min={ 0 }
+							max={ 30 }
+							beforeIcon="arrow-down"
+							afterIcon="arrow-up"
+						/>
+					)}
+				</PanelBody>
+                <PanelColorSettings
+					title={ __( 'Colors', 'traduction' ) }
+					colorSettings={ [
+						{
+							value: backgroundColor,
+							onChange: backgroundColor => setAttributes( { backgroundColor } ),
+							label: __( 'Background color', 'traduction' ),
+						},
+					] }
+				/>
+			</InspectorControls>
             <InnerBlocks
                 allowedBlocks={ALLOWED_BLOCKS}
                 template={BASE_TEMPLATE}

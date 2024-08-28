@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n'
 import { useBlockProps, URLInput,BlockControls,
-AlignmentToolbar } from '@wordpress/block-editor'
+AlignmentToolbar, PanelColorSettings, InspectorControls } from '@wordpress/block-editor'
 import { TextControl,ToolbarGroup, ToolbarButton } from '@wordpress/components'
 import { Fragment } from '@wordpress/element'
 
@@ -8,15 +8,14 @@ import './editor.scss'
 
 export default function Edit( props ) {
 	const blockProps = useBlockProps()
+	// const { attributes: { number, title, chapterSign, alignment, textColor, backgroundColor, withRadius, radius }, setAttributes, className, isSelected } = props
+	const { attributes, className, setAttributes} = props
+	const { number, title, chapterSign, alignment, textColor, backgroundColor, withRadius, radius } = attributes
 
 	// On ajoute notre classe personnalisée
-	// blockProps.className += ` is-${props.attributes.type}`
-
-	// blockProps.className += props.attributes.type ? ` bouton-style--${props.attributes.type}` : ' bouton-style--normal';
 	blockProps.className += ` bouton-style--${props.attributes.type || 'normal'}`;
 
 	// La fonction qui met à jour la valeur
-
 	return (
 		<div { ...blockProps }>
 			{ props.isSelected ? (
@@ -28,7 +27,7 @@ export default function Edit( props ) {
 					value={ props.attributes.alignment }
 					onChange={ alignment => props.setAttributes( { alignment } ) }
 				/>
-
+				
 				<ToolbarGroup>
 					<ToolbarButton
 						icon="arrow-left"
@@ -49,6 +48,18 @@ export default function Edit( props ) {
 					
 				</ToolbarGroup>
 			</BlockControls>
+			<InspectorControls>
+                <PanelColorSettings
+					title={ __( 'Colors', 'traduction' ) }
+					colorSettings={ [
+						{
+							value: backgroundColor,
+							onChange: backgroundColor => setAttributes( { backgroundColor } ),
+							label: __( 'Background color', 'traduction' ),
+						},
+					] }
+				/>
+			</InspectorControls>
 
 					<TextControl
 						placeholder={ __( 'Link Label', 'new-gutenberg-block' ) }
@@ -64,7 +75,10 @@ export default function Edit( props ) {
 				</Fragment>
 			) : (
 				<p>
-					<a href={ props.attributes.url }>
+					<a href={ props.attributes.url } style={ {
+                    // borderRadius: withRadius ? radius : null,
+                    backgroundColor: backgroundColor,
+                } }>
 						{ props.attributes.text || __( 'Edit link',  'new-gutenberg-block' ) }
 					</a>
 				</p>

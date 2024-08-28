@@ -31,15 +31,27 @@ __webpack_require__.r(__webpack_exports__);
 
 function Edit(props) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
+  // const { attributes: { number, title, chapterSign, alignment, textColor, backgroundColor, withRadius, radius }, setAttributes, className, isSelected } = props
+  const {
+    attributes,
+    className,
+    setAttributes
+  } = props;
+  const {
+    number,
+    title,
+    chapterSign,
+    alignment,
+    textColor,
+    backgroundColor,
+    withRadius,
+    radius
+  } = attributes;
 
   // On ajoute notre classe personnalisée
-  // blockProps.className += ` is-${props.attributes.type}`
-
-  // blockProps.className += props.attributes.type ? ` bouton-style--${props.attributes.type}` : ' bouton-style--normal';
   blockProps.className += ` bouton-style--${props.attributes.type || 'normal'}`;
 
   // La fonction qui met à jour la valeur
-
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, props.isSelected ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentToolbar, {
@@ -63,7 +75,16 @@ function Edit(props) {
       type: 'droite'
     }),
     isPressed: props.attributes.type == 'droite'
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors', 'traduction'),
+    colorSettings: [{
+      value: backgroundColor,
+      onChange: backgroundColor => setAttributes({
+        backgroundColor
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background color', 'traduction')
+    }]
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Link Label', 'new-gutenberg-block'),
     value: props.attributes.text,
     onChange: text => props.setAttributes({
@@ -77,7 +98,11 @@ function Edit(props) {
     }),
     __nextHasNoMarginBottom: true
   })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: props.attributes.url
+    href: props.attributes.url,
+    style: {
+      // borderRadius: withRadius ? radius : null,
+      backgroundColor: backgroundColor
+    }
   }, props.attributes.text || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit link', 'new-gutenberg-block'))));
 }
 
@@ -149,10 +174,32 @@ __webpack_require__.r(__webpack_exports__);
 function save(props) {
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
   blockProps.className += ` bouton-style--${props.attributes.type || 'normal'}`;
+  const {
+    attributes: {
+      number,
+      text,
+      title,
+      chapterSign,
+      alignment,
+      textColor,
+      backgroundColor,
+      withRadius,
+      radius,
+      url
+    },
+    setAttributes,
+    className,
+    isSelected
+  } = props;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: props.attributes.url
+    href: props.attributes.url,
+    title: "Bonjour",
+    style: {
+      // borderRadius: withRadius ? radius : null,
+      backgroundColor: backgroundColor
+    }
   }, props.attributes.text));
 }
 

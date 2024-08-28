@@ -13,7 +13,7 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType('niji-citeo-plugin-v1/url', {
+registerBlockType('niji-citeo-plugin/url', {
 	icon: blockIcons.icon5,
 	/**
 	 * @see ./edit.js

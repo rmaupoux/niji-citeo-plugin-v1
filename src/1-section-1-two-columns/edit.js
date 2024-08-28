@@ -24,7 +24,7 @@ export default function Edit( props ) {
     const { number, title, chapterSign, alignment, textColor, backgroundColor, withRadius, radius } = attributes
 
     // Liste des blocs autorisés
-    const ALLOWED_BLOCKS = ['core/image', 'core/heading', 'core/paragraph', 'niji-citeo-plugin-v1/url', 'core/button'];
+    const ALLOWED_BLOCKS = ['core/image', 'core/heading', 'core/paragraph', 'niji-citeo-plugin/url', 'core/button'];
 
     // Template de blocs avec deux colonnes
     const BASE_TEMPLATE = [
@@ -37,8 +37,8 @@ export default function Edit( props ) {
                         className: 'custom-button-group'  // Classe personnalisée pour styliser le groupe si nécessaire
                     },
                     [
-                        ['niji-citeo-plugin-v1/url', { text: __('Premier button', 'niji-plugin') }],
-                        ['niji-citeo-plugin-v1/url', { text: __('Second button', 'niji-plugin') }],
+                        ['niji-citeo-plugin/url', { text: __('Premier button', 'niji-plugin') }],
+                        ['niji-citeo-plugin/url', { text: __('Second button', 'niji-plugin') }],
                     ]
                 ],
 			

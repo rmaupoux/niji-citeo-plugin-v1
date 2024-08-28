@@ -46,7 +46,7 @@ function Edit(props) {
   } = attributes;
 
   // Liste des blocs autorisés
-  const ALLOWED_BLOCKS = ['core/image', 'core/heading', 'core/paragraph', 'niji-citeo-plugin-v1/url', 'core/button'];
+  const ALLOWED_BLOCKS = ['core/image', 'core/heading', 'core/paragraph', 'niji-citeo-plugin/url', 'core/button'];
 
   // Template de blocs avec deux colonnes
   const BASE_TEMPLATE = [['core/columns', {}, [['core/column', {}, [['core/heading', {
@@ -57,9 +57,9 @@ function Edit(props) {
   // Utilisation du bloc group pour encapsuler les boutons
   {
     className: 'custom-button-group' // Classe personnalisée pour styliser le groupe si nécessaire
-  }, [['niji-citeo-plugin-v1/url', {
+  }, [['niji-citeo-plugin/url', {
     text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Premier button', 'niji-plugin')
-  }], ['niji-citeo-plugin-v1/url', {
+  }], ['niji-citeo-plugin/url', {
     text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Second button', 'niji-plugin')
   }]]]]], ['core/column', {}, [['core/image', {}]]]]]];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -127,7 +127,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('niji-citeo-plugin-v1/innerblocks', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('niji-citeo-plugin/innerblocks', {
   icon: _icons_js__WEBPACK_IMPORTED_MODULE_2__["default"].icon5,
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -457,7 +457,7 @@ module.exports = window["wp"]["i18n"];
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkniji_citeo_plugin_v1"] = self["webpackChunkniji_citeo_plugin_v1"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkniji_citeo_plugin"] = self["webpackChunkniji_citeo_plugin"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

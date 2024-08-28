@@ -21,7 +21,6 @@ export default function Edit( props ) {
 			{ props.isSelected ? (
 
 				<Fragment>
-
 				<BlockControls>
 				<AlignmentToolbar
 					value={ props.attributes.alignment }
@@ -72,6 +71,19 @@ export default function Edit( props ) {
 						onChange={ (url, post) => props.setAttributes( { url, text: (post && post.title) || props.attributes.text  } ) }
 						__nextHasNoMarginBottom={true}  
 					/>
+
+
+<p>
+					<a href={ props.attributes.url } style={ {
+                    // borderRadius: withRadius ? radius : null,
+                    backgroundColor: backgroundColor,
+                } }>
+						{ props.attributes.text || __( 'Edit link',  'new-gutenberg-block' ) }
+					</a>
+				</p>
+
+
+
 				</Fragment>
 			) : (
 				<p>

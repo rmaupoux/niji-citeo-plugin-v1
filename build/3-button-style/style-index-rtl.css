@@ -2,35 +2,35 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/3-button-style/style.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
-.wp-block-niji-citeo-plugin-v1-url.bouton-style--normal a, .wp-block-niji-citeo-plugin-v1-url.bouton-style--gauche a, .wp-block-niji-citeo-plugin-v1-url.bouton-style--droite a {
+.wp-block-niji-citeo-plugin-url.bouton-style--normal a, .wp-block-niji-citeo-plugin-url.bouton-style--gauche a, .wp-block-niji-citeo-plugin-url.bouton-style--droite a {
   padding: 15px 30px;
   border-radius: 0.8rem;
   background: #0066ff;
   color: white;
   text-decoration: none;
 }
-.wp-block-niji-citeo-plugin-v1-url.bouton-style--normal a:hover, .wp-block-niji-citeo-plugin-v1-url.bouton-style--gauche a:hover, .wp-block-niji-citeo-plugin-v1-url.bouton-style--droite a:hover {
+.wp-block-niji-citeo-plugin-url.bouton-style--normal a:hover, .wp-block-niji-citeo-plugin-url.bouton-style--gauche a:hover, .wp-block-niji-citeo-plugin-url.bouton-style--droite a:hover {
   background: #003d99;
 }
-.wp-block-niji-citeo-plugin-v1-url.bouton-style--normal.bouton-style--normal a, .wp-block-niji-citeo-plugin-v1-url.bouton-style--gauche.bouton-style--normal a, .wp-block-niji-citeo-plugin-v1-url.bouton-style--droite.bouton-style--normal a {
+.wp-block-niji-citeo-plugin-url.bouton-style--normal.bouton-style--normal a, .wp-block-niji-citeo-plugin-url.bouton-style--gauche.bouton-style--normal a, .wp-block-niji-citeo-plugin-url.bouton-style--droite.bouton-style--normal a {
   border: 1px solid #003d99;
 }
-.wp-block-niji-citeo-plugin-v1-url.bouton-style--normal.bouton-style--gauche a, .wp-block-niji-citeo-plugin-v1-url.bouton-style--gauche.bouton-style--gauche a, .wp-block-niji-citeo-plugin-v1-url.bouton-style--droite.bouton-style--gauche a {
+.wp-block-niji-citeo-plugin-url.bouton-style--normal.bouton-style--gauche a, .wp-block-niji-citeo-plugin-url.bouton-style--gauche.bouton-style--gauche a, .wp-block-niji-citeo-plugin-url.bouton-style--droite.bouton-style--gauche a {
   padding-right: 35px;
   position: relative;
 }
-.wp-block-niji-citeo-plugin-v1-url.bouton-style--normal.bouton-style--gauche a::before, .wp-block-niji-citeo-plugin-v1-url.bouton-style--gauche.bouton-style--gauche a::before, .wp-block-niji-citeo-plugin-v1-url.bouton-style--droite.bouton-style--gauche a::before {
+.wp-block-niji-citeo-plugin-url.bouton-style--normal.bouton-style--gauche a::before, .wp-block-niji-citeo-plugin-url.bouton-style--gauche.bouton-style--gauche a::before, .wp-block-niji-citeo-plugin-url.bouton-style--droite.bouton-style--gauche a::before {
   content: "❮";
   position: absolute;
   transform: translateY(-50%);
   right: 1rem;
   top: 50%;
 }
-.wp-block-niji-citeo-plugin-v1-url.bouton-style--normal.bouton-style--droite a, .wp-block-niji-citeo-plugin-v1-url.bouton-style--gauche.bouton-style--droite a, .wp-block-niji-citeo-plugin-v1-url.bouton-style--droite.bouton-style--droite a {
+.wp-block-niji-citeo-plugin-url.bouton-style--normal.bouton-style--droite a, .wp-block-niji-citeo-plugin-url.bouton-style--gauche.bouton-style--droite a, .wp-block-niji-citeo-plugin-url.bouton-style--droite.bouton-style--droite a {
   padding-left: 35px;
   position: relative;
 }
-.wp-block-niji-citeo-plugin-v1-url.bouton-style--normal.bouton-style--droite a::after, .wp-block-niji-citeo-plugin-v1-url.bouton-style--gauche.bouton-style--droite a::after, .wp-block-niji-citeo-plugin-v1-url.bouton-style--droite.bouton-style--droite a::after {
+.wp-block-niji-citeo-plugin-url.bouton-style--normal.bouton-style--droite a::after, .wp-block-niji-citeo-plugin-url.bouton-style--gauche.bouton-style--droite a::after, .wp-block-niji-citeo-plugin-url.bouton-style--droite.bouton-style--droite a::after {
   content: "❯";
   position: absolute;
   transform: translateY(-50%);

@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Niji Citeo Plugin V1
+ * Plugin Name:       Niji Citeo Plugin V2
  * Description:       Example block scaffolded with Create Block tool.
  * Requires at least: 6.1
  * Requires PHP:      7.0
@@ -8,7 +8,7 @@
  * Author:            The WordPress Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       niji-citeo-plugin-v1
+ * Text Domain:       niji-citeo-plugin
  *
  * @package CreateBlock
  */
@@ -24,12 +24,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function create_block_niji_citeo_plugin_v1_block_init() {
+function create_block_niji_citeo_plugin_block_init() {
 	register_block_type( __DIR__ . '/build/1-section-1-two-columns' );
 	register_block_type( __DIR__ . '/build/2-section-carrousel' );
 	register_block_type( __DIR__ . '/build/3-button-style' );
 }
-add_action( 'init', 'create_block_niji_citeo_plugin_v1_block_init' );
+add_action( 'init', 'create_block_niji_citeo_plugin_block_init' );
 
 // Ajout de Js pour le carousel
 function my_plugin_enqueue_assets() {

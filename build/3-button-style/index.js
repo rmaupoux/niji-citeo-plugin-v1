@@ -97,7 +97,13 @@ function Edit(props) {
       text: post && post.title || props.attributes.text
     }),
     __nextHasNoMarginBottom: true
-  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: props.attributes.url,
+    style: {
+      // borderRadius: withRadius ? radius : null,
+      backgroundColor: backgroundColor
+    }
+  }, props.attributes.text || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit link', 'new-gutenberg-block')))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: props.attributes.url,
     style: {
       // borderRadius: withRadius ? radius : null,
@@ -138,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('niji-citeo-plugin-v1/url', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('niji-citeo-plugin/url', {
   icon: _icons_js__WEBPACK_IMPORTED_MODULE_3__["default"].icon5,
   /**
    * @see ./edit.js
@@ -489,7 +495,7 @@ module.exports = window["wp"]["i18n"];
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkniji_citeo_plugin_v1"] = self["webpackChunkniji_citeo_plugin_v1"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkniji_citeo_plugin"] = self["webpackChunkniji_citeo_plugin"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

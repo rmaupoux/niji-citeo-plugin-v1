@@ -1,1 +1,60 @@
-document.addEventListener("DOMContentLoaded",(()=>{document.querySelectorAll(".multi-image-gallery").forEach((e=>{const t=e.querySelectorAll(".gallery-image");let n=0;const l=document.createElement("button");l.textContent="Prev",l.classList.add("slider-nav","prev");const a=document.createElement("button");function c(e){t.forEach(((n,l)=>{n.classList.remove("active","prev"),l===e?n.classList.add("active"):l===(e-1+t.length)%t.length&&n.classList.add("prev")}))}a.textContent="Next",a.classList.add("slider-nav","next"),e.appendChild(l),e.appendChild(a),a.addEventListener("click",(function(){n=(n+1)%t.length,c(n)})),l.addEventListener("click",(function(){n=(n-1+t.length)%t.length,c(n)})),c(n)}))}));
+/******/ (() => { // webpackBootstrap
+/*!*****************************************!*\
+  !*** ./src/2-section-carrousel/view.js ***!
+  \*****************************************/
+function initSlider() {
+  const sliders = document.querySelectorAll('.multi-image-gallery');
+  sliders.forEach(slider => {
+    const slides = slider.querySelectorAll('.gallery-image');
+    let currentIndex = 0;
+
+    // Créer les boutons de navigation
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'Prev';
+    prevButton.classList.add('slider-nav', 'prev');
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next';
+    nextButton.classList.add('slider-nav', 'next');
+    slider.appendChild(prevButton);
+    slider.appendChild(nextButton);
+
+    // Fonction pour montrer un slide spécifique
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'prev');
+        if (i === index) {
+          slide.classList.add('active');
+        } else if (i === (index - 1 + slides.length) % slides.length) {
+          slide.classList.add('prev');
+        }
+      });
+    }
+
+    // Fonction pour aller au slide suivant
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    // Fonction pour aller au slide précédent
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    // Ajouter des écouteurs d'événements pour les boutons de navigation
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
+
+    // Montrer le premier slide au chargement
+    showSlide(currentIndex);
+  });
+}
+
+// Appel de la fonction lorsque le DOM est prêt
+document.addEventListener('DOMContentLoaded', () => {
+  initSlider();
+});
+/******/ })()
+;
+//# sourceMappingURL=view.js.map

@@ -1,0 +1,57 @@
+@import 'vars';
+
+.wp-block-niji-citeo-plugin-url {
+  
+  &.bouton-style--normal,
+  &.bouton-style--gauche,
+  &.bouton-style--droite{
+    a {
+      padding: 15px 30px;
+      border-radius: .8rem;
+      background: $blue;
+      color: white;
+      text-decoration: none;
+      &:hover {
+        background: darken($blue, 20%);
+      }
+    }
+
+    &.bouton-style {
+      &--normal a {
+        border: 1px solid darken($blue, 20%);
+      }
+      &--gauche a {
+        padding-left: 35px;
+        position: relative;
+        &::before {
+          content: "❮";
+          position: absolute;
+          transform: translateY(-50%);
+          left:1rem;
+          top: 50%;
+        }
+      }
+      &--droite a {
+        padding-right: 35px;
+        position: relative;
+        &::after {
+          content: "❯";
+          position: absolute;
+          transform: translateY(-50%);
+          right:1rem;
+          top: 50%;
+        }
+      }
+      
+    }
+   
+}
+ 
+
+ 
+  
+}
+
+.components-accessible-toolbar .components-button.is-pressed:before {
+  background-color: $blue; /* Remplacez #your-color par la couleur désirée */
+}

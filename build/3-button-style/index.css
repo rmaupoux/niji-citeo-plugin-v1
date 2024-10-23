@@ -1,1 +1,25 @@
-.new-gutenberg-block-toolbar-green{color:#83bd71}.new-gutenberg-block-toolbar-yellow{color:#ffc334}.new-gutenberg-block-toolbar-red{color:#ff2952}.new-gutenberg-block-toolbar-blue{color:#06f}.components-accessible-toolbar .components-button.is-pressed:before{background-color:#06f}
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/3-button-style/editor.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+.new-gutenberg-block-toolbar-green {
+  color: #83BD71;
+}
+
+.new-gutenberg-block-toolbar-yellow {
+  color: #FFC334;
+}
+
+.new-gutenberg-block-toolbar-red {
+  color: #FF2952;
+}
+
+.new-gutenberg-block-toolbar-blue {
+  color: #0066ff;
+}
+
+.components-accessible-toolbar .components-button.is-pressed:before {
+  background-color: #0066ff; /* Remplacez #your-color par la couleur désirée */
+}
+
+/*# sourceMappingURL=index.css.map*/

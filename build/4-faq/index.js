@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/1-section-1-two-columns/edit.js":
-/*!*********************************************!*\
-  !*** ./src/1-section-1-two-columns/edit.js ***!
-  \*********************************************/
+/***/ "./src/4-faq/edit.js":
+/*!***************************!*\
+  !*** ./src/4-faq/edit.js ***!
+  \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -18,129 +18,121 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/1-section-1-two-columns/editor.scss");
-
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/4-faq/editor.scss");
 
 
 
 
 function Edit(props) {
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
-  // const { attributes: { number, title, chapterSign, alignment, textColor, backgroundColor, withRadius, radius }, setAttributes, className, isSelected } = props
   const {
     attributes,
-    className,
     setAttributes
   } = props;
   const {
-    number,
-    title,
-    chapterSign,
-    alignment,
-    textColor,
-    backgroundColor,
-    withRadius,
-    radius
-  } = attributes;
+    faqs
+  } = attributes; // Récupérer les attributs (faqs doit être un tableau)
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
 
-  // Liste des blocs autorisés
-  const ALLOWED_BLOCKS = ['core/image', 'core/heading', 'core/paragraph', 'niji-citeo-plugin/url', 'core/button'];
+  // Fonction pour mettre à jour une question ou une réponse spécifique
+  const updateFAQ = (value, index, type) => {
+    const newFAQs = [...faqs]; // Faire une copie du tableau faqs
+    newFAQs[index][type] = value; // Mettre à jour la question ou la réponse
+    setAttributes({
+      faqs: newFAQs
+    }); // Mettre à jour les attributs
+  };
+  const removeFAQ = index => {
+    const newFAQs = faqs.filter((_, i) => i !== index); // Garder tous les éléments sauf celui à cet index
+    setAttributes({
+      faqs: newFAQs
+    }); // Mettre à jour les attributs
+  };
 
-  // Template de blocs avec deux colonnes
-  const BASE_TEMPLATE = [['core/columns', {}, [['core/column', {}, [['core/heading', {
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your title here', 'niji-plugin')
-  }], ['core/paragraph', {
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your content here', 'niji-plugin')
-  }], ['core/group',
-  // Utilisation du bloc group pour encapsuler les boutons
-  {
-    className: 'custom-button-group' // Classe personnalisée pour styliser le groupe si nécessaire
-  }, [['niji-citeo-plugin/url', {
-    text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Premier button', 'niji-plugin')
-  }], ['niji-citeo-plugin/url', {
-    text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Second button', 'niji-plugin')
-  }]]]]], ['core/column', {}, [['core/image', {}]]]]]];
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  // Fonction pour ajouter une nouvelle FAQ
+  const addFAQ = () => {
+    const newFAQs = [...faqs, {
+      question: '',
+      answer: ''
+    }];
+    setAttributes({
+      faqs: newFAQs
+    });
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
-    style: {
-      borderRadius: withRadius ? radius : null,
-      backgroundColor: backgroundColor,
-      textAlign: alignment
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentToolbar, {
-    value: props.attributes.alignment,
-    onChange: alignment => props.setAttributes({
-      alignment
-    })
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border', 'Border traduction.')
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Radius', 'Border traduction.'),
-    checked: withRadius,
-    onChange: () => setAttributes({
-      withRadius: !withRadius
-    })
-  }), withRadius && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    value: radius,
-    onChange: radius => setAttributes({
-      radius
-    }),
-    min: 0,
-    max: 30,
-    beforeIcon: "arrow-down",
-    afterIcon: "arrow-up"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors', 'traduction'),
-    colorSettings: [{
-      value: backgroundColor,
-      onChange: backgroundColor => setAttributes({
-        backgroundColor
-      }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background color', 'traduction')
-    }]
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
-    allowedBlocks: ALLOWED_BLOCKS,
-    template: BASE_TEMPLATE,
-    templateLock: false
-  }));
+    className: "faq-block"
+  }, faqs.length > 0 && faqs.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index,
+    className: "faq-item"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "h4",
+    value: faq.question,
+    onChange: value => updateFAQ(value, index, 'question'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Question...', 'faq-block')
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    value: faq.answer,
+    onChange: value => updateFAQ(value, index, 'answer'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Answer...', 'faq-block')
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: value => removeFAQ(index)
+  }, "Effacer"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: addFAQ
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ajouter une FAQ', 'faq-block'))));
 }
 
 /***/ }),
 
-/***/ "./src/1-section-1-two-columns/index.js":
-/*!**********************************************!*\
-  !*** ./src/1-section-1-two-columns/index.js ***!
-  \**********************************************/
+/***/ "./src/4-faq/index.js":
+/*!****************************!*\
+  !*** ./src/4-faq/index.js ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/1-section-1-two-columns/style.scss");
-/* harmony import */ var _icons_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../icons.js */ "./src/icons.js");
-/* harmony import */ var _icons_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_icons_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/1-section-1-two-columns/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/1-section-1-two-columns/save.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/4-faq/style.scss");
+/* harmony import */ var _icons_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons.js */ "./src/icons.js");
+/* harmony import */ var _icons_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_icons_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/4-faq/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/4-faq/save.js");
 
 
 
 
+/**
+ * Internal dependencies
+ */
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('niji-citeo-plugin/innerblocks', {
-  icon: (_icons_js__WEBPACK_IMPORTED_MODULE_2___default().icon5),
-  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
+
+
+/**
+ * Every block starts by registering a new block type definition.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('niji-citeo-plugin/faq', {
+  icon: (_icons_js__WEBPACK_IMPORTED_MODULE_3___default().icon5),
+  /**
+   * @see ./edit.js
+   */
+  edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
+  /**
+   * @see ./save.js
+   */
+  save: _save__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
 
 /***/ }),
 
-/***/ "./src/1-section-1-two-columns/save.js":
-/*!*********************************************!*\
-  !*** ./src/1-section-1-two-columns/save.js ***!
-  \*********************************************/
+/***/ "./src/4-faq/save.js":
+/*!***************************!*\
+  !*** ./src/4-faq/save.js ***!
+  \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -158,30 +150,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function save(props) {
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
+  // const blockProps = useBlockProps.save();
   const {
-    attributes: {
-      number,
-      title,
-      chapterSign,
-      alignment,
-      textColor,
-      backgroundColor,
-      withRadius,
-      radius
-    },
-    setAttributes,
-    className,
-    isSelected
-  } = props;
+    faqs
+  } = props.attributes;
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
+
+  // blockProps.className += ` bouton-style--${props.attributes.type || 'normal'}`;
+
+  // const { attributes: { number, text, title, chapterSign, alignment, textColor, backgroundColor, withRadius, radius, url }, setAttributes, className, isSelected } = props
+
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
-    style: {
-      borderRadius: withRadius ? radius : null,
-      backgroundColor: backgroundColor,
-      textAlign: alignment
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, null));
+    className: "faq-block"
+  }, faqs.length > 0 && faqs.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index,
+    className: "faq-item"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, faq.question), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, faq.answer))));
 }
 
 /***/ }),
@@ -229,10 +214,10 @@ blockIcons.icon5 = createElement('svg', {
 
 /***/ }),
 
-/***/ "./src/1-section-1-two-columns/editor.scss":
-/*!*************************************************!*\
-  !*** ./src/1-section-1-two-columns/editor.scss ***!
-  \*************************************************/
+/***/ "./src/4-faq/editor.scss":
+/*!*******************************!*\
+  !*** ./src/4-faq/editor.scss ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -242,10 +227,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/1-section-1-two-columns/style.scss":
-/*!************************************************!*\
-  !*** ./src/1-section-1-two-columns/style.scss ***!
-  \************************************************/
+/***/ "./src/4-faq/style.scss":
+/*!******************************!*\
+  !*** ./src/4-faq/style.scss ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -285,17 +270,6 @@ module.exports = window["wp"]["blockEditor"];
 
 "use strict";
 module.exports = window["wp"]["blocks"];
-
-/***/ }),
-
-/***/ "@wordpress/components":
-/*!************************************!*\
-  !*** external ["wp","components"] ***!
-  \************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = window["wp"]["components"];
 
 /***/ }),
 
@@ -422,8 +396,8 @@ module.exports = window["wp"]["i18n"];
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"1-section-1-two-columns/index": 0,
-/******/ 			"1-section-1-two-columns/style-index": 0
+/******/ 			"4-faq/index": 0,
+/******/ 			"4-faq/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -475,7 +449,7 @@ module.exports = window["wp"]["i18n"];
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["1-section-1-two-columns/style-index"], () => (__webpack_require__("./src/1-section-1-two-columns/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["4-faq/style-index"], () => (__webpack_require__("./src/4-faq/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "niji-citeo-plugin/faq",
+  "version": "1.0",
+  "title": "4. faq",
+  "icon": "edit",
+  "category": "text",
+  "description": "Un bloc éditable avec le composant Richtext",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "faqs": {
+      "type": "array",
+      "default": [
+        {
+          "question": "Quelle est votre première question",
+          "answer": "Voici la réponse à la première question"
+        }
+      ]
+    }
+  },
+  "textdomain": "new-gutenberg-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

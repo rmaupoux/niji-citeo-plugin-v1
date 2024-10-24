@@ -1,5 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { Button } from '@wordpress/components';
+import { Icon, addCard, trash } from '@wordpress/icons';
+
 
 import './editor.scss';
 
@@ -44,17 +47,22 @@ export default function Edit( props ) {
                             onChange={(value) => updateFAQ(value, index, 'answer')}
                             placeholder={__('Answer...', 'faq-block')}
                         />
-						<button
+						<Button
+                            variant="primary"
 							onClick={(value) => removeFAQ(index)}
-						>Effacer
-							</button>
+						>
+                             <Icon icon={trash} />
+						</Button>
 							
 
                     </div>
                 ))}
-                <button onClick={addFAQ}>
-                    {__('Ajouter une FAQ', 'faq-block')}
-                </button>
+                <Button 
+                variant="secondary"
+                onClick={addFAQ}>
+                
+                <Icon icon={addCard} />
+                </Button>
             </div>
         </>
     );

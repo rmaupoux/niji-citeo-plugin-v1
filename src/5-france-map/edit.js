@@ -1,4 +1,5 @@
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
+import { useBlockProps, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, TextControl, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 
@@ -24,7 +25,7 @@ export default function Edit({ attributes, setAttributes }) {
         { "titre": "Mayotte", "chiffre": "-", "couleur": "#C4B5FD" },
         { "titre": "Saint-Martin", "chiffre": "-", "couleur": "#C4B5FD" },
         { "titre": "Saint-Pierre-et-Miquelon", "chiffre": "-", "couleur": "#C4B5FD" }
-    ], moyenneChiffre = '0' } = attributes;
+    ], moyenneChiffre = '0', couleur1 = '#FF0000' } = attributes;
 
     const blockProps = useBlockProps();
  
@@ -58,8 +59,17 @@ export default function Edit({ attributes, setAttributes }) {
     return (
 
         <section {...blockProps}>
-        
         <InspectorControls>
+            <PanelColorSettings
+					title={ __( 'Colors', 'traduction' ) }
+					colorSettings={ [
+						{
+							value: couleur1,
+							onChange: backgroundColor => setAttributes( { couleur1: backgroundColor } ),
+							label: __( 'Background color', 'traduction' ),
+						},
+					] }
+				/>
 			<PanelBody title="Modifier les chiffres par zone">
                     <TextControl
 						label='Moyenne nationale'
@@ -79,6 +89,7 @@ export default function Edit({ attributes, setAttributes }) {
 
         <div className="wp-block-columns map">
              <div className="wp-block-column map--numbers" style={{ flexBasis: '33.33%' }}>
+                <div className='carre-rouge' style={ { backgroundColor: couleur1 } }></div>
                     <p id="title_map" className="Body-1 text-1">Moyenne nationale</p>
                     <p id="number_map" className="Body-1 text-2">{moyenneChiffre}</p>
                     <ul>

@@ -12,7 +12,10 @@
 		},
 		"moyenneChiffre": {
         	"type": "string"
-    	}
+    	},
+		"couleur1": {
+			"type": "string"
+		}
 	},
 	"textdomain": "notre-impact",
 	"editorScript": "file:./index.js",

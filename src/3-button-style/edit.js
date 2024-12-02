@@ -73,16 +73,14 @@ export default function Edit( props ) {
 					/>
 
 
-<p>
+				<p>
 					<a href={ props.attributes.url } style={ {
                     // borderRadius: withRadius ? radius : null,
                     backgroundColor: backgroundColor,
-                } }>
+                	} }>
 						{ props.attributes.text || __( 'Edit link',  'new-gutenberg-block' ) }
 					</a>
 				</p>
-
-
 
 				</Fragment>
 			) : (

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "notre-impact/map",
+  "version": "0.1.0",
+  "title": "carte",
+  "category": "text",
+  "description": "Carte interactive",
+  "attributes": {
+    "zonesData": {
+      "type": "array"
+    },
+    "moyenneChiffre": {
+      "type": "string"
+    }
+  },
+  "textdomain": "notre-impact",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view-map.js"
+}

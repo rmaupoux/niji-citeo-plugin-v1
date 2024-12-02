@@ -12,9 +12,12 @@ export default function Edit( props ) {
     const blockProps = useBlockProps();
 
     // Fonction pour mettre à jour une question ou une réponse spécifique
-    const updateFAQ = (value, index, type) => {
+
+    // !!!! Confusion avec le type c'est une clef en fait
+
+    const updateFAQ = (value, index, clef) => {
         const newFAQs = [...faqs]; // Faire une copie du tableau faqs
-        newFAQs[index][type] = value; // Mettre à jour la question ou la réponse
+        newFAQs[index][clef] = value; // Mettre à jour la question ou la réponse
         setAttributes({ faqs: newFAQs }); // Mettre à jour les attributs
     };
 	const removeFAQ = (index) => {
@@ -35,20 +38,22 @@ export default function Edit( props ) {
             <div {...blockProps} className="faq-block">
                 {faqs.length > 0 && faqs.map((faq, index) => (
                     <div key={index} className="faq-item">
-                        <RichText
-                            tagName="h4"
-                            value={faq.question}
-                            onChange={(value) => updateFAQ(value, index, 'question')}
-                            placeholder={__('Question...', 'faq-block')}
-                        />
-                        <RichText
-                            tagName="p"
-                            value={faq.answer}
-                            onChange={(value) => updateFAQ(value, index, 'answer')}
-                            placeholder={__('Answer...', 'faq-block')}
-                        />
+                        <div>
+                            <RichText
+                                tagName="h4"
+                                value={faq.question}
+                                onChange={(value) => updateFAQ(value, index, 'question')}
+                                placeholder={__('Question...', 'faq-block')}
+                            />
+                            <RichText
+                                tagName="p"
+                                value={faq.answer}
+                                onChange={(value) => updateFAQ(value, index, 'answer')}
+                                placeholder={__('Answer...', 'faq-block')}
+                            />
+                        </div>
 						<Button
-                            variant="primary"
+                            variant="link"
 							onClick={(value) => removeFAQ(index)}
 						>
                              <Icon icon={trash} />

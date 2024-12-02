@@ -19,3 +19,13 @@
 .components-accessible-toolbar .components-button.is-pressed:before {
   background-color: $blue; /* Remplacez #your-color par la couleur désirée */
 }
+
+.faq-item {
+ >div{
+  flex:4
+ }
+ button {
+  flex:1
+ }
+display: flex;
+}

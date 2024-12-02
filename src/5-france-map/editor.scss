@@ -1,0 +1,35 @@
+.map .map--img {
+    padding-left: 2rem;
+    svg {
+        .cls-1 {
+            fill: #333233;
+        }
+        .cls-1, .cls-2, .cls-3 {
+            stroke: #fff;
+            stroke-linejoin: round;
+            stroke-width: .45px;
+        }
+        .cls-4 {
+            fill: #fff;
+        }
+    
+        .cls-5, .cls-3 {
+            fill: #525050;
+        }
+    
+        .cls-2 {
+            fill: #8f8e91;
+        }
+    
+        .cls-6 {
+            fill: #e5e4e7;
+        }
+    
+        [data-index] {
+            cursor: pointer; 
+        }
+        .no-select {
+            pointer-events: none;
+        }
+    }
+}

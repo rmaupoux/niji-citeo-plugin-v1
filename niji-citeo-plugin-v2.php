@@ -29,6 +29,7 @@ function create_block_niji_citeo_plugin_block_init() {
 	register_block_type( __DIR__ . '/build/2-section-carrousel' );
 	register_block_type( __DIR__ . '/build/3-button-style' );
 	register_block_type( __DIR__ . '/build/4-faq' );
+	register_block_type( __DIR__ . '/build/5-france-map' );
 }
 add_action( 'init', 'create_block_niji_citeo_plugin_block_init' );
 

@@ -152,9 +152,12 @@ function Edit(props) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
 
   // Fonction pour mettre à jour une question ou une réponse spécifique
-  const updateFAQ = (value, index, type) => {
+
+  // !!!! Confusion avec le type c'est une clef en fait
+
+  const updateFAQ = (value, index, clef) => {
     const newFAQs = [...faqs]; // Faire une copie du tableau faqs
-    newFAQs[index][type] = value; // Mettre à jour la question ou la réponse
+    newFAQs[index][clef] = value; // Mettre à jour la question ou la réponse
     setAttributes({
       faqs: newFAQs
     }); // Mettre à jour les attributs
@@ -182,7 +185,7 @@ function Edit(props) {
   }, faqs.length > 0 && faqs.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
     className: "faq-item"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h4",
     value: faq.question,
     onChange: value => updateFAQ(value, index, 'question'),
@@ -192,8 +195,8 @@ function Edit(props) {
     value: faq.answer,
     onChange: value => updateFAQ(value, index, 'answer'),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Answer...', 'faq-block')
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-    variant: "primary",
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    variant: "link",
     onClick: value => removeFAQ(index)
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"]

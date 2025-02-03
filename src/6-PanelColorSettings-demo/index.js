@@ -5,15 +5,15 @@ import blockIcons from '../icons.js'
 /**
  * Internal dependencies
  */
-import Edit from './edit';
-import save from './save';
+import Edit from './js/edit.js';
+import save from './js/save.js';
 
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType('niji-citeo-plugin/faqs', {
+registerBlockType('niji-citeo-plugin/riche', {
 	icon: blockIcons.icon5,
 	/**
 	 * @see ./edit.js
@@ -24,5 +24,3 @@ registerBlockType('niji-citeo-plugin/faqs', {
 	 */
 	save,
 });
-
-

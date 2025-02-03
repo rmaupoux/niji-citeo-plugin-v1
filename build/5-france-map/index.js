@@ -154,7 +154,14 @@ function Edit({
       onChange: backgroundColor => setAttributes({
         couleur1: backgroundColor
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background color', 'traduction')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background color', 'traduction'),
+      colors: [{
+        name: 'white',
+        color: '#fff'
+      }, {
+        name: 'black',
+        color: '#222'
+      }]
     }]
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: "Modifier les chiffres par zone"

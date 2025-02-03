@@ -131,10 +131,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/trash.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/add-card.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/4-faq/editor.scss");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/trash.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/add-card.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/4-faq/editor.scss");
+
 
 
 
@@ -148,28 +151,24 @@ function Edit(props) {
   } = props;
   const {
     faqs
-  } = attributes; // Récupérer les attributs (faqs doit être un tableau)
+  } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
 
-  // Fonction pour mettre à jour une question ou une réponse spécifique
-
-  // !!!! Confusion avec le type c'est une clef en fait
-
-  const updateFAQ = (value, index, clef) => {
-    const newFAQs = [...faqs]; // Faire une copie du tableau faqs
-    newFAQs[index][clef] = value; // Mettre à jour la question ou la réponse
+  // État temporaire pour stocker l'élément en cours de déplacement
+  const [draggedIndex, setDraggedIndex] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(null);
+  const updateFAQ = (value, index, key) => {
+    const newFAQs = [...faqs];
+    newFAQs[index][key] = value;
     setAttributes({
       faqs: newFAQs
-    }); // Mettre à jour les attributs
+    });
   };
   const removeFAQ = index => {
-    const newFAQs = faqs.filter((_, i) => i !== index); // Garder tous les éléments sauf celui à cet index
+    const newFAQs = faqs.filter((_, i) => i !== index);
     setAttributes({
       faqs: newFAQs
-    }); // Mettre à jour les attributs
+    });
   };
-
-  // Fonction pour ajouter une nouvelle FAQ
   const addFAQ = () => {
     const newFAQs = [...faqs, {
       question: '',
@@ -179,13 +178,37 @@ function Edit(props) {
       faqs: newFAQs
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+
+  // Gestion du drag and drop
+  const handleDragStart = index => {
+    setDraggedIndex(index);
+  };
+  const handleDragOver = event => {
+    event.preventDefault(); // Nécessaire pour permettre le drop
+  };
+  const handleDrop = index => {
+    if (draggedIndex === null || draggedIndex === index) return;
+    const newFAQs = [...faqs];
+    const movedItem = newFAQs.splice(draggedIndex, 1)[0];
+    newFAQs.splice(index, 0, movedItem);
+    setAttributes({
+      faqs: newFAQs
+    });
+    setDraggedIndex(null);
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     className: "faq-block"
-  }, faqs.length > 0 && faqs.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, faqs.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
-    className: "faq-item"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "faq-item",
+    draggable: "true",
+    onDragStart: () => handleDragStart(index),
+    onDragOver: handleDragOver,
+    onDrop: () => handleDrop(index)
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "faq-content"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h4",
     value: faq.question,
     onChange: value => updateFAQ(value, index, 'question'),
@@ -197,15 +220,15 @@ function Edit(props) {
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Answer...', 'faq-block')
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "link",
-    onClick: value => removeFAQ(index)
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"]
+    onClick: () => removeFAQ(index)
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"]
   })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "secondary",
     onClick: addFAQ
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"]
+  })));
 }
 
 /***/ }),
@@ -242,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('niji-citeo-plugin/faq', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('niji-citeo-plugin/faqs', {
   icon: (_icons_js__WEBPACK_IMPORTED_MODULE_3___default().icon5),
   /**
    * @see ./edit.js

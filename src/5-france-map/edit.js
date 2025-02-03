@@ -67,6 +67,16 @@ export default function Edit({ attributes, setAttributes }) {
 							value: couleur1,
 							onChange: backgroundColor => setAttributes( { couleur1: backgroundColor } ),
 							label: __( 'Background color', 'traduction' ),
+                            colors: [
+                                {
+                                  name: 'white',
+                                  color: '#fff'
+                                },
+                                {
+                                  name: 'black',
+                                  color: '#222'
+                                }
+                              ]
 						},
 					] }
 				/>

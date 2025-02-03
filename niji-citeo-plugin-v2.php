@@ -30,8 +30,30 @@ function create_block_niji_citeo_plugin_block_init() {
 	register_block_type( __DIR__ . '/build/3-button-style' );
 	register_block_type( __DIR__ . '/build/4-faq' );
 	register_block_type( __DIR__ . '/build/5-france-map' );
+	register_block_type( __DIR__ . '/build/6-PanelColorSettings-demo' );
+	register_block_type( __DIR__ . '/build/7-formulaire-popin' );
 }
 add_action( 'init', 'create_block_niji_citeo_plugin_block_init' );
+
+function niji_citeo_enqueue_block_assets() {
+    // Handle du script enregistré automatiquement pour le bloc
+    $script_handle = 'niji-citeo-plugin-faqs-editor-script'; 
+
+    // Vérifiez si le script est enregistré avant de le localiser
+    if (wp_script_is($script_handle, 'registered')) {
+        wp_localize_script(
+            $script_handle,
+            'totoData', 
+            array(
+                'toto' => 'bonjour', 
+            )
+        );
+    }
+}
+add_action( 'enqueue_block_assets', 'niji_citeo_enqueue_block_assets' );
+
+
+
 
 // Ajout de Js pour le carousel
 function my_plugin_enqueue_assets() {

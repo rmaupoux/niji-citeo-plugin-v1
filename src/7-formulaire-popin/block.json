@@ -1,0 +1,59 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "niji-citeo-plugin/form",
+    "version": "0.1.0",
+    "title": "7-rich text2",
+    "category": "text",
+    "description": "demo form interactive",
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Un coup de pouce!"
+        },
+        "subtitle": {
+            "type": "string",
+            "default": "En remplissant le formulaire vous nous aidez à connaitre l’impact de nos outils pédagogiques"
+        },
+        "selectLabel": {
+            "type": "string",
+            "default": "Vous êtes :"
+        },
+        "numberLabel": {
+            "type": "string",
+            "default": "Combien d’enfants seront sensibilisés par ce contenu ?"
+        },
+        "numberPlaceholder": {
+            "type": "string",
+            "default": "Nombre d'enfants"
+        },
+        "emailLabel": {
+            "type": "string",
+            "default": "E-mail professionnel"
+        },
+        "emailPlaceholder": {
+            "type": "string",
+            "default": "enseignant@ac-france.com"
+        },
+        "checkboxLabel": {
+            "type": "string",
+            "default": "Recevoir nos actualités et ressources pédagogiques gratuites"
+        },
+        "disclaimer": {
+            "type": "string",
+            "default": "En soumettant ce formulaire, vous consentez à ce que les informations recueillies fassent l’objet d’un traitement par CITEO pour vous permettre de recevoir la newsletter Club Citeo. En savoir plus sur la gestion de vos données et sur vos droits."
+        },
+        "option1Label": {
+            "type": "string",
+            "default": "Enseignant"
+        },
+        "option2Label": {
+            "type": "string",
+            "default": "Parent"
+        }
+    },
+    "textdomain": "new-gutenberg-block",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}

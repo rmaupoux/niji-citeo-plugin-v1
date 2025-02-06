@@ -228,7 +228,7 @@ function Edit(props) {
     onClick: addFAQ
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"]
-  })));
+  }), " Ajouter une option"));
 }
 
 /***/ }),

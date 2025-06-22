@@ -10,10 +10,10 @@
   text-decoration: none;
 }
 .wp-block-niji-citeo-plugin-url.bouton-style--normal a:hover, .wp-block-niji-citeo-plugin-url.bouton-style--gauche a:hover, .wp-block-niji-citeo-plugin-url.bouton-style--droite a:hover {
-  background: rgb(0, 61.2, 153);
+  background: #003d99;
 }
 .wp-block-niji-citeo-plugin-url.bouton-style--normal.bouton-style--normal a, .wp-block-niji-citeo-plugin-url.bouton-style--gauche.bouton-style--normal a, .wp-block-niji-citeo-plugin-url.bouton-style--droite.bouton-style--normal a {
-  border: 1px solid rgb(0, 61.2, 153);
+  border: 1px solid #003d99;
 }
 .wp-block-niji-citeo-plugin-url.bouton-style--normal.bouton-style--gauche a, .wp-block-niji-citeo-plugin-url.bouton-style--gauche.bouton-style--gauche a, .wp-block-niji-citeo-plugin-url.bouton-style--droite.bouton-style--gauche a {
   padding-right: 35px;

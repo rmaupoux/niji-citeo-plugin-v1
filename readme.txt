@@ -1,55 +1,49 @@
-=== Niji Citeo Plugin V1 ===
+=== Niji Citeo Plugin ===
 Contributors:      The WordPress Contributors
-Tags:              block
+Tags:              block, gutenberg, carrousel, faq, map
 Tested up to:      6.1
 Stable tag:        0.1.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Example block scaffolded with Create Block tool.
+Ajoute plusieurs blocs personnalisés pour l’éditeur Gutenberg : carrousel, FAQ, carte de France, formulaire popin, etc.
 
 == Description ==
 
-This is the long description. No limit, and you can use Markdown (as well as in the following sections).
+Ce plugin propose une collection de blocs Gutenberg personnalisés pour enrichir vos pages WordPress :
+- Section deux colonnes
+- Carrousel d’images
+- Bouton stylisé
+- Bloc FAQ
+- Carte de France interactive
+- Formulaire popin
+- Démo PanelColorSettings
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Chaque bloc est optimisé pour l’éditeur et le front, avec chargement conditionnel des scripts.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload the plugin files to the `/wp-content/plugins/niji_citeo_plugin` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-
+1. Placez le dossier du plugin dans `/wp-content/plugins/niji-citeo-plugin-v1/`
+2. Activez-le depuis le menu Extensions de WordPress.
+3. (Si vous utilisez Docker) Montez le dossier dans le conteneur WordPress via le volume `./wp-content:/var/www/html/wp-content`.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Pourquoi mon bloc n’apparaît pas dans l’éditeur ? =
+Assurez-vous d’avoir exécuté `npm run build` dans le dossier du plugin.
 
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
+= Comment ajouter un nouveau bloc ? =
+Ajoutez un dossier dans `src/`, mettez à jour le fichier principal PHP pour l’enregistrer, puis rebuild.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Bloc carrousel dans l’éditeur
+2. Bloc FAQ sur le front
 
 == Changelog ==
 
 = 0.1.0 =
-* Release
+* Première version : ajout des blocs principaux.
 
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above. This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation." Arbitrary sections will be shown below the built-in sections outlined above.
+== Support ==
+Pour toute question, contactez l’équipe Niji ou ouvrez une issue sur le dépôt Git.
